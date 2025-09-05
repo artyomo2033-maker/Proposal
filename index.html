@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine App</title>
+  <title>Be My Valentine</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1 id="question">Will you be my Valentine?</h1>
-    <div class="options">
-      <button class="btn" id="yesBtn">Yes</button>
-      <button class="btn" id="noBtn">No</button>
+    <div class="buttons">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
     </div>
-  </div>
-
-  <!-- Ending Section -->
-  <div class="ending hidden" id="ending">
-    <img src="hug.png" alt="Couple Hug" class="ending-img">
-    <h2>I already gave you my heart and nose ❤️</h2>
-    <p class="extra">Now my heart and nose is yours forever 💕</p>
-    <div class="hearts"></div>
+    <div id="finalScene" class="hidden">
+      <img src="images/ci.png" alt="Couple Hug" class="hug-img">
+      <h2 class="final-text">Now my heart and nose is yours forever ❤️</h2>
+    </div>
   </div>
 
   <script src="script.js"></script>

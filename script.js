@@ -1,78 +1,36 @@
 const questions = [
   "Will you be my Valentine?",
-  "Will you be my Valentine?",
-  "Will you be my Valentine?",
-  "Will you be my Valentine?",
-  "Will you be my Valentine?",
-  "Will you be my Valentine?",
-  "Will you be my Valentine?",
-  "Will you be my Valentine?",
-  "Will you be my Valentine?"
+  "Will you be my Valentine? (Don't lie 💋)",
+  "Will you be my Valentine? (Na books vangi tharan 📚)",
+  "Will you be my Valentine? (Namba onna tour polam 🏞️)",
+  "Will you be my Valentine? (We'll make rasam together 🍲)",
+  "Will you be my Valentine? (Namba gym polam 💪)",
+  "Will you be my Valentine? (I have biceps 💪)",
+  "Will you be my Valentine? (Namaku future la 6 packs vendama 🏋️)",
+  "Will you be my Valentine? (I'll give you nose 👃)",
+  "Will you be my Valentine? (Final one ❤️)"
 ];
 
-const options = [
-  ["Yes", "No"],
-  ["Yes", "Don’t lie 😘"],
-  ["Yes", "Na books vangi tharan"],
-  ["Yes", "Namba onna tour polam"],
-  ["Yes", "We'll make rasam together"],
-  ["Yes", "Namba gym polam"],
-  ["Yes", "I have biceps"],
-  ["Yes", "Namaku future la 6 packs vendama"],
-  ["Yes", "Yes"]
-];
-
-let index = 0;
+let currentIndex = 0;
 const questionEl = document.getElementById("question");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
-const container = document.querySelector(".container");
-const ending = document.getElementById("ending");
-const heartsContainer = document.querySelector(".hearts");
-
-function updateQuestion() {
-  questionEl.textContent = questions[index];
-  yesBtn.textContent = options[index][0];
-  noBtn.textContent = options[index][1];
-}
+const finalScene = document.getElementById("finalScene");
 
 noBtn.addEventListener("click", () => {
-  index++;
-  if (index < questions.length) {
-    updateQuestion();
-  } else {
-    container.classList.add("hidden");
-    ending.classList.remove("hidden");
-    startHearts();
+  if (currentIndex < questions.length - 1) {
+    currentIndex++;
+    questionEl.textContent = questions[currentIndex];
+
+    if (currentIndex === questions.length - 1) {
+      noBtn.style.display = "none"; // hide NO at the end
+    }
   }
 });
 
 yesBtn.addEventListener("click", () => {
-  index++;
-  if (index < questions.length) {
-    updateQuestion();
-  } else {
-    container.classList.add("hidden");
-    ending.classList.remove("hidden");
-    startHearts();
-  }
+  questionEl.style.display = "none";
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+  finalScene.classList.remove("hidden");
 });
-
-// Floating hearts animation
-function startHearts() {
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.textContent = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 20 + "px";
-    heartsContainer.appendChild(heart);
-
-    setTimeout(() => {
-      heart.remove();
-    }, 5000);
-  }, 500);
-}
-
-// Start first question
-updateQuestion();
